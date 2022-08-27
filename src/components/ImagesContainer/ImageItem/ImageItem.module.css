@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  opacity: 0;
+  animation: ani 2.5s forwards;
+}
+
+.image__item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.delButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.delButton:hover {
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
