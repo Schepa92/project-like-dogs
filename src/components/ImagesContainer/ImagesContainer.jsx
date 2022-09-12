@@ -1,28 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import s from './ImagesContainer.module.css';
-import { getApiResource } from '../../utils/network';
 import ImageItem from './ImageItem/ImageItem';
 import { useSelector, useDispatch } from 'react-redux';
-import { addPhoto } from '../../store/actions';
+import { getResource } from '../../store/thunks/thunk';
 
 const ImagesContainer = () => {
   const dispatch = useDispatch();
-  const getResource = async (url) => {
-    const res = await getApiResource(url);
-    const img = res.message;
-    dispatch(addPhoto(img));
-  };
-
-  const storePhotos = useSelector((state) => state.photoReducer);
+  const storePhotos = useSelector((state) => state.photoReducer.photos);
 
   useEffect(() => {
-    getResource('https://dog.ceo/api/breeds/image/random/6');
-  }, []);
+    dispatch(getResource(6));
+  }, [dispatch]);
 
   return (
     <div className={s.container}>
       {storePhotos.length ? (
-        storePhotos.map((img, index) => <ImageItem img={img} key={index} />)
+        storePhotos.map((img, index) => (
+          <ImageItem img={img.url} isLike={img.likesCount} key={index} />
+        ))
       ) : (
         <h2>No photos</h2>
       )}

@@ -5,8 +5,7 @@ import add from './img/add.svg';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import EditPopup from '../EditPopup/EditPopup';
-import { addPhoto } from '../../store/actions';
-import { getApiResource } from '../../utils/network';
+import { getResource } from '../../store/thunks/thunk';
 
 const ProfileInfo = () => {
   const [name, setName] = useState('Sergey Schepankevich');
@@ -18,14 +17,8 @@ const ProfileInfo = () => {
 
   const dispatch = useDispatch();
 
-  const getResource = async (url) => {
-    const res = await getApiResource(url);
-    const img = res.message;
-    dispatch(addPhoto(img));
-  };
-
   const addElement = () => {
-    getResource(`https://dog.ceo/api/breeds/image/random/${counter}`);
+    dispatch(getResource(counter));
   };
 
   return (

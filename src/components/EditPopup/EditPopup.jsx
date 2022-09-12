@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import close from './img/close.svg';
 import s from './EditPopup.module.css';
 
 const EditPopup = ({
@@ -20,14 +21,13 @@ const EditPopup = ({
   };
   return (
     <>
-      <div
-        className={s.container}
-        onBlur={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget)) {
-            setActiveEditPopup(false);
-          }
-        }}
-      >
+      <div className={s.container}>
+        <img
+          src={close}
+          alt='Close'
+          onClick={() => setActiveEditPopup(false)}
+          className={s.close}
+        />
         <div className={s.window}>
           <h3 className={s.window__title}>Edit profile</h3>
           <form onSubmit={editInfo} className={s.form}>

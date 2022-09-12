@@ -12,6 +12,18 @@
   animation: ani 0.7s forwards;
 }
 
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close:hover {
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+
 @keyframes ani {
   0% {
     opacity: 0;
@@ -25,6 +37,7 @@
   width: 30%;
   height: 30%;
   border: 1px solid white;
+  position: relative;
   display: grid;
   justify-items: center;
   background-color: white;

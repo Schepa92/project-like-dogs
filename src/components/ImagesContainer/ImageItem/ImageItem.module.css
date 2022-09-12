@@ -20,6 +20,13 @@
   cursor: pointer;
 }
 
+.likeButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
 .delButton:hover {
   transition: 0.5s;
   transform: scale(1.2);
